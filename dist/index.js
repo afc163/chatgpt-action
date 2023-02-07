@@ -12,9 +12,6 @@ async function createChatGPTAPI(apiKey) {
 
   const api = new ChatGPTAPI({ apiKey });
 
-  // ensure the API is properly authenticated
-  await api.ensureAuth();
-
   return api;
 }
 
