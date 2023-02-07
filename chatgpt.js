@@ -1,10 +1,9 @@
 const core = require("@actions/core");
-const fetch = require('unfetch');
-
-globalThis.fetch = fetch;
 
 async function createChatGPTAPI(apiKey) {
   // To use ESM in CommonJS, you can use a dynamic import
+  const fetch = await import("unfetch");
+  globalThis.fetch = fetch;
   const { ChatGPTAPI } = await import("chatgpt");
 
   const api = new ChatGPTAPI({ apiKey });
