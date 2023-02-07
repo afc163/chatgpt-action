@@ -8308,6 +8308,30 @@ exports.isPlainObject = isPlainObject;
 
 /***/ }),
 
+/***/ 1645:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+var realFetch = __nccwpck_require__(8083);
+module.exports = function(url, options) {
+	if (/^\/\//.test(url)) {
+		url = 'https:' + url;
+	}
+	return realFetch.call(this, url, options);
+};
+
+if (!global.fetch) {
+	global.fetch = module.exports;
+	global.Response = realFetch.Response;
+	global.Headers = realFetch.Headers;
+	global.Request = realFetch.Request;
+}
+
+
+/***/ }),
+
 /***/ 7653:
 /***/ ((module) => {
 
@@ -13687,6 +13711,7 @@ module.exports = { genReviewPRPrompt, genReviewPRSplitedPrompt };
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const core = __nccwpck_require__(9469);
+__nccwpck_require__(1645);
 const { genReviewPRPrompt, genReviewPRSplitedPrompt } = __nccwpck_require__(3904);
 const { callChatGPT, startConversation } = __nccwpck_require__(5823);
 const { Octokit } = __nccwpck_require__(9865);
@@ -14030,7 +14055,7 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const core = __nccwpck_require__(9469);
-
+__nccwpck_require__(1645);
 const { createChatGPTAPI } = __nccwpck_require__(5823);
 const { runPRReview } = __nccwpck_require__(3664);
 

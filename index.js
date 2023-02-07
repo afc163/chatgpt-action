@@ -1,5 +1,5 @@
 const core = require("@actions/core");
-
+require('isomorphic-fetch');
 const { createChatGPTAPI } = require("./chatgpt");
 const { runPRReview } = require("./run");
 

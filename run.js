@@ -1,4 +1,5 @@
 const core = require("@actions/core");
+require('isomorphic-fetch');
 const { genReviewPRPrompt, genReviewPRSplitedPrompt } = require("./prompt");
 const { callChatGPT, startConversation } = require("./chatgpt");
 const { Octokit } = require("@octokit/action");
