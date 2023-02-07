@@ -13665,7 +13665,7 @@ function genReviewPRPrompt(title, body, diff) {
   return prompt;
 }
 
-function genReviewPRSplitedPrompt(title, body, diff, limit) {
+function genReviewPRSplitedPrompt(title, body, html_url, diff, limit) {
   let splits = [];
   diff
     .split(/(diff --git .+\n)/g)
@@ -13681,8 +13681,10 @@ function genReviewPRSplitedPrompt(title, body, diff, limit) {
           splits.push(dif)
         }
       }
-      return `此处代码改动如下，你是否有评审建议：
-      ${cur}`;
+      return `${cur}
+      
+      此处代码改动如上所示，你是否有评审建议？
+      `;
     });
 
   return {
@@ -13690,7 +13692,7 @@ function genReviewPRSplitedPrompt(title, body, diff, limit) {
       `这里有一个 GitHub pull request，现在假设你是这个 pull request 的代码评审人，请你先阅读一下 pull request 的标题和内容，读完了告诉我。
       标题是 ${title}，
       内容是 ${body}`,
-      `接下来我将把 pull request 的改动按文件一条条告诉你。若改动过大，我将省略掉并告知你`,
+      `接下来我将把 pull request 的改动按文件一条条告诉你。若改动过大，我将省略掉并告知你。`,
     ],
     diffPrompts: splits,
     endPrompt: `基于以上信息，你能告诉我这个 pull request 存在什么问题吗？有何改动建议？`,
