@@ -13675,14 +13675,13 @@ function genReviewPRSplitedPrompt(title, body, diff, limit) {
         let dif = prev + cur;
         if (dif.length > limit) {
           const header = diff.split("\n", 1)[0];
-          const info = "这个改动有点大，这里省略掉。";
+          const info = "这个改动有点大，省略掉。";
           splits.push(`${header}\n${info}`);
         } else {
-          splits.push(dif);
+          splits.push(`${dif}\n此处代码改动如上所示，你是否有评审建议？`);
         }
       }
-      return `${cur}
-      此处代码改动如上所示，你是否有评审建议？`;
+      return cur;
     });
 
   return {
