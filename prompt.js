@@ -16,7 +16,9 @@ function genReviewPRSplitedPrompt(title, body, diff, limit) {
         if (dif.length > limit) {
           const header = diff.split("\n", 1)[0];
           const info = "这个改动有点大，这里省略掉。";
-          splits.push(`${header}\n${info}`);
+          splits.push(`
+          此处代码改动如下，你是否有评审建议：
+          ${header}\n${info}`);
         } else splits.push(dif);
       }
       return cur;
@@ -24,11 +26,11 @@ function genReviewPRSplitedPrompt(title, body, diff, limit) {
 
   return {
     welcomePrompts: [
-      `这是一个 pull request，标题是 ${title}，现在假设你是这个 pull request 的代码评审人。`,
-      `现在我将把这个 pull request 里的代码改动一条条告诉你。如果代码改动过多，我将省略掉部分改动并告知你。`,
+      `这里有一个标题是 ${title} 的 GitHub pull request，现在假设你是它的代码评审人，可以么？`,
+      `接下来我将把 pull request 里的代码改动一条条告诉你。如果代码变化过多，我将省略掉改动内容并告知你。`,
     ],
     diffPrompts: splits,
-    endPrompt: `基于以上信息，你能告诉我这个 pull request 存在什么问题吗？请指出具体的代码并提供改动建议。`,
+    endPrompt: `基于以上信息，你能告诉我这个 pull request 存在什么问题吗？有何改动建议？`,
   };
 }
 
