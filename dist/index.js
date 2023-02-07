@@ -13660,10 +13660,8 @@ function wrappy (fn, cb) {
 /***/ ((module) => {
 
 function genReviewPRPrompt(title, body, diff) {
-  const prompt = `Can you tell me the problems with the following pull request and describe your suggestions? 
-  title: ${title}
-  body: ${body}
-  The following diff is the changes made in this PR.
+  const prompt = `你能帮我检查这个 pull request 的改动存在什么问题？如果存在问题，请给我一些改动建议。 
+  pull request 的标题是 ${title}，代码变动如下：
   ${diff}`;
   return prompt;
 }
@@ -13678,7 +13676,7 @@ function genReviewPRSplitedPrompt(title, body, diff, limit) {
         let dif = prev + cur;
         if (dif.length > limit) {
           const header = diff.split("\n", 1)[0];
-          const info = "This diff is too large so I omitted it for you.";
+          const info = "这个改动有点大，这里省略掉一些";
           splits.push(`${header}\n${info}`);
         } else splits.push(dif);
       }
@@ -13687,15 +13685,11 @@ function genReviewPRSplitedPrompt(title, body, diff, limit) {
 
   return {
     welcomePrompts: [
-      `Here is a pull request. Please assume you are a reviewer of this PR. First I will tell you the title and body of the PR. Please greet the PR author if you have done reading.
-The title is ${title}
-The remaining part is the body.
-${body}`,
-      `Now I will give you the changes made in this PR one file at a time.
-When a diff is too large, I will omit it and tell you about that.`,
+      `这是一个 pull request，标题是 ${title}，现在假设你是这个 pull request 的代码评审人。`,
+      `现在我将把这个 pull request 里的代码改动一条条告诉你。如果代码改动过多，我将省略掉部分改动并告知你。`,
     ],
     diffPrompts: splits,
-    endPrompt: `Based on your existing knowledge, can you tell me the problems with the above pull request and your suggestions for this PR?`,
+    endPrompt: `基于你已知的信息，你能告诉我这个 pull request 里存在什么问题吗？请指出具体的代码并提供改动建议。`,
   };
 }
 
