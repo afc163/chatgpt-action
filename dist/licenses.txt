@@ -77,6 +77,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 keyv
 MIT
 
+unfetch-polyfill
+
 uuid
 MIT
 The MIT License (MIT)

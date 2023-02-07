@@ -5,10 +5,10 @@ require('./sourcemap-register.js');/******/ (() => { // webpackBootstrap
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const core = __nccwpck_require__(9469);
-__nccwpck_require__(3147);
 
 async function createChatGPTAPI(apiKey) {
   // To use ESM in CommonJS, you can use a dynamic import
+  await __nccwpck_require__.e(/* import() */ 147).then(__nccwpck_require__.t.bind(__nccwpck_require__, 3147, 23));
   const { ChatGPTAPI } = await __nccwpck_require__.e(/* import() */ 435).then(__nccwpck_require__.bind(__nccwpck_require__, 3435));
 
   const api = new ChatGPTAPI({ apiKey });
@@ -10963,14 +10963,6 @@ exports.debug = debug; // for test
 
 /***/ }),
 
-/***/ 3147:
-/***/ (() => {
-
-self.fetch||(self.fetch=function(e,n){return n=n||{},new Promise(function(t,r){var s=new XMLHttpRequest,o=[],u={},a=function e(){return{ok:2==(s.status/100|0),statusText:s.statusText,status:s.status,url:s.responseURL,text:function(){return Promise.resolve(s.responseText)},json:function(){return Promise.resolve(s.responseText).then(JSON.parse)},blob:function(){return Promise.resolve(new Blob([s.response]))},clone:e,headers:{keys:function(){return o},entries:function(){return o.map(function(e){return[e,s.getResponseHeader(e)]})},get:function(e){return s.getResponseHeader(e)},has:function(e){return null!=s.getResponseHeader(e)}}}};for(var i in s.open(n.method||"get",e,!0),s.onload=function(){s.getAllResponseHeaders().toLowerCase().replace(/^(.+?):/gm,function(e,n){u[n]||o.push(u[n]=n)}),t(a())},s.onerror=r,s.withCredentials="include"==n.credentials,n.headers)s.setRequestHeader(i,n.headers[i]);s.send(n.body||null)})});
-
-
-/***/ }),
-
 /***/ 334:
 /***/ ((__unused_webpack_module, exports) => {
 
@@ -13938,6 +13930,36 @@ module.exports = require("zlib");
 /******/ 	__nccwpck_require__.m = __webpack_modules__;
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/create fake namespace object */
+/******/ 	(() => {
+/******/ 		var getProto = Object.getPrototypeOf ? (obj) => (Object.getPrototypeOf(obj)) : (obj) => (obj.__proto__);
+/******/ 		var leafPrototypes;
+/******/ 		// create a fake namespace object
+/******/ 		// mode & 1: value is a module id, require it
+/******/ 		// mode & 2: merge all properties of value into the ns
+/******/ 		// mode & 4: return value when already ns object
+/******/ 		// mode & 16: return value when it's Promise-like
+/******/ 		// mode & 8|1: behave like require
+/******/ 		__nccwpck_require__.t = function(value, mode) {
+/******/ 			if(mode & 1) value = this(value);
+/******/ 			if(mode & 8) return value;
+/******/ 			if(typeof value === 'object' && value) {
+/******/ 				if((mode & 4) && value.__esModule) return value;
+/******/ 				if((mode & 16) && typeof value.then === 'function') return value;
+/******/ 			}
+/******/ 			var ns = Object.create(null);
+/******/ 			__nccwpck_require__.r(ns);
+/******/ 			var def = {};
+/******/ 			leafPrototypes = leafPrototypes || [null, getProto({}), getProto([]), getProto(getProto)];
+/******/ 			for(var current = mode & 2 && value; typeof current == 'object' && !~leafPrototypes.indexOf(current); current = getProto(current)) {
+/******/ 				Object.getOwnPropertyNames(current).forEach((key) => (def[key] = () => (value[key])));
+/******/ 			}
+/******/ 			def['default'] = () => (value);
+/******/ 			__nccwpck_require__.d(ns, def);
+/******/ 			return ns;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -14039,7 +14061,6 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const core = __nccwpck_require__(9469);
-__nccwpck_require__(3147);
 
 const { createChatGPTAPI } = __nccwpck_require__(5823);
 const { runPRReview } = __nccwpck_require__(3664);
