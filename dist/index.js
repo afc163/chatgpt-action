@@ -13665,7 +13665,7 @@ function genReviewPRPrompt(title, body, diff) {
   return prompt;
 }
 
-function genReviewPRSplitedPrompt(title, body, html_url, diff, limit) {
+function genReviewPRSplitedPrompt(title, body, diff, limit) {
   let splits = [];
   diff
     .split(/(diff --git .+\n)/g)
@@ -13678,13 +13678,11 @@ function genReviewPRSplitedPrompt(title, body, html_url, diff, limit) {
           const info = "这个改动有点大，这里省略掉。";
           splits.push(`${header}\n${info}`);
         } else {
-          splits.push(dif)
+          splits.push(dif);
         }
       }
       return `${cur}
-      
-      此处代码改动如上所示，你是否有评审建议？
-      `;
+      此处代码改动如上所示，你是否有评审建议？`;
     });
 
   return {
