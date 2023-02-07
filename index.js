@@ -1,4 +1,5 @@
 const core = require("@actions/core");
+require('unfetch/polyfill');
 
 const { createChatGPTAPI } = require("./chatgpt");
 const { runPRReview } = require("./run");

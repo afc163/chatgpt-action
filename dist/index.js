@@ -10962,6 +10962,14 @@ exports.debug = debug; // for test
 
 /***/ }),
 
+/***/ 3147:
+/***/ (() => {
+
+self.fetch||(self.fetch=function(e,n){return n=n||{},new Promise(function(t,r){var s=new XMLHttpRequest,o=[],u={},a=function e(){return{ok:2==(s.status/100|0),statusText:s.statusText,status:s.status,url:s.responseURL,text:function(){return Promise.resolve(s.responseText)},json:function(){return Promise.resolve(s.responseText).then(JSON.parse)},blob:function(){return Promise.resolve(new Blob([s.response]))},clone:e,headers:{keys:function(){return o},entries:function(){return o.map(function(e){return[e,s.getResponseHeader(e)]})},get:function(e){return s.getResponseHeader(e)},has:function(e){return null!=s.getResponseHeader(e)}}}};for(var i in s.open(n.method||"get",e,!0),s.onload=function(){s.getAllResponseHeaders().toLowerCase().replace(/^(.+?):/gm,function(e,n){u[n]||o.push(u[n]=n)}),t(a())},s.onerror=r,s.withCredentials="include"==n.credentials,n.headers)s.setRequestHeader(i,n.headers[i]);s.send(n.body||null)})});
+
+
+/***/ }),
+
 /***/ 334:
 /***/ ((__unused_webpack_module, exports) => {
 
@@ -14030,6 +14038,7 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const core = __nccwpck_require__(9469);
+__nccwpck_require__(3147);
 
 const { createChatGPTAPI } = __nccwpck_require__(5823);
 const { runPRReview } = __nccwpck_require__(3664);
