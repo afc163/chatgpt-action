@@ -13739,7 +13739,7 @@ async function runPRReview({ api, repo, owner, number, split }) {
       diff,
       65536
     );
-    const conversation = startConversation(api, 5);
+    const conversation = startConversation(api, 10);
     let cnt = 0;
     const prompts = welcomePrompts.concat(diffPrompts);
     prompts.push(endPrompt);
