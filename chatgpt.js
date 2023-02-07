@@ -1,10 +1,10 @@
 const core = require("@actions/core");
 
-async function createChatGPTAPI(sessionToken) {
+async function createChatGPTAPI(apiKey) {
   // To use ESM in CommonJS, you can use a dynamic import
   const { ChatGPTAPI } = await import("chatgpt");
 
-  const api = new ChatGPTAPI({ sessionToken });
+  const api = new ChatGPTAPI({ apiKey });
 
   // ensure the API is properly authenticated
   await api.ensureAuth();

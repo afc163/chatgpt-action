@@ -8,8 +8,8 @@ inputs:
   number:
     description: "ID of Pull Request or Issue"
     required: true
-  sessionToken:
-    description: "Your ChatGPT session token."
+  apiKey:
+    description: "Your ChatGPT api key."
     required: true
   mode:
     description: "Mode"

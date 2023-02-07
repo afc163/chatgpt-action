@@ -7,7 +7,7 @@ const { runPRReview } = require("./run");
 async function run() {
   try {
     const number = parseInt(core.getInput("number"));
-    const sessionToken = core.getInput("sessionToken");
+    const apiKey = core.getInput("apiKey");
     const mode = core.getInput("mode");
     const split = core.getInput("split");
 
@@ -15,7 +15,7 @@ async function run() {
     const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
 
     // Create ChatGPT API
-    const api = await createChatGPTAPI(sessionToken);
+    const api = await createChatGPTAPI(apiKey);
 
     if (mode == "pr") {
       runPRReview({ api, owner, repo, number, split });
