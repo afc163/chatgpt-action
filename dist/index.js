@@ -13675,7 +13675,7 @@ function genReviewPRSplitedPrompt(title, body, diff, limit) {
         let dif = prev + cur;
         if (dif.length > limit) {
           const header = diff.split("\n", 1)[0];
-          const info = "这个改动有点大，这里省略掉一些";
+          const info = "这个改动有点大，这里省略掉。";
           splits.push(`${header}\n${info}`);
         } else splits.push(dif);
       }
@@ -13688,7 +13688,7 @@ function genReviewPRSplitedPrompt(title, body, diff, limit) {
       `现在我将把这个 pull request 里的代码改动一条条告诉你。如果代码改动过多，我将省略掉部分改动并告知你。`,
     ],
     diffPrompts: splits,
-    endPrompt: `基于你已知的信息，你能告诉我这个 pull request 里存在什么问题吗？请指出具体的代码并提供改动建议。`,
+    endPrompt: `基于以上信息，你能告诉我这个 pull request 存在什么问题吗？请指出具体的代码并提供改动建议。`,
   };
 }
 
@@ -13745,8 +13745,10 @@ async function runPRReview({ api, repo, owner, number, split }) {
     prompts.push(endPrompt);
     for (const prompt of prompts) {
       core.info(`Sending ${prompt}`);
-      const response = await conversation.sendMessage(prompt);
-      core.info(`Received ${response.text}`);
+      const response = await conversation.sendMessage(`
+      此处代码改动如下，你是否有评审建议：
+      ${prompt}`);
+      core.info(`Received: ${response.text}`);
       reply += `**ChatGPT#${++cnt}**: ${response.text}\n\n`;
       // Wait for 10s
       await new Promise((r) => setTimeout(r, 10000));
