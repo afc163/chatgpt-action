@@ -1,4 +1,5 @@
 const core = require("@actions/core");
+require('unfetch/polyfill');
 
 async function createChatGPTAPI(apiKey) {
   // To use ESM in CommonJS, you can use a dynamic import

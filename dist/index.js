@@ -5,6 +5,7 @@ require('./sourcemap-register.js');/******/ (() => { // webpackBootstrap
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const core = __nccwpck_require__(9469);
+__nccwpck_require__(3147);
 
 async function createChatGPTAPI(apiKey) {
   // To use ESM in CommonJS, you can use a dynamic import
