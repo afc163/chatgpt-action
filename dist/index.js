@@ -13757,14 +13757,6 @@ module.exports = eval("require")("encoding");
 
 /***/ }),
 
-/***/ 4091:
-/***/ ((module) => {
-
-module.exports = eval("require")("unfetch");
-
-
-/***/ }),
-
 /***/ 6154:
 /***/ ((module) => {
 
@@ -14038,8 +14030,6 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const core = __nccwpck_require__(9469);
-const fetch = __nccwpck_require__(4091);
-globalThis.fetch = fetch;
 
 const { createChatGPTAPI } = __nccwpck_require__(5823);
 const { runPRReview } = __nccwpck_require__(3664);
