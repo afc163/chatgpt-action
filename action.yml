@@ -23,5 +23,5 @@ outputs:
   comment:
     description: "The comment from chatgpt."
 runs:
-  using: "node18"
+  using: "node16"
   main: "dist/index.js"
