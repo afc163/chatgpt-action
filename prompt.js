@@ -22,12 +22,13 @@ function genReviewPRSplitedPrompt(title, body, diff, limit) {
         }
       }
       return `${cur}
-      此处代码改动如上所示，你是否有评审建议？`;
+      此处代码改动如上所示，你是否有评审建议？
+      `;
     });
 
   return {
     welcomePrompts: [
-      `这里有一个 GitHub pull request，现在假设你是这个 pull request 的代码评审人，请你先阅读一下 pull request 的标题和内容，读完了告诉我。
+      `这里有一个 GitHub pull request，现在假设你是这个 pull request 的代码评审人，请你先阅读一下 pull request 的标题和内容，读完了告诉我。另外请全程用中文回复，可以么?
       标题是 ${title}，
       内容是 ${body}`,
       `接下来我将把 pull request 的改动按文件一条条告诉你。若改动过大，我将省略掉并告知你。`,
